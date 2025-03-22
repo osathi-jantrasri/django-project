@@ -1,0 +1,16 @@
+# Ignore the virtual environment directory
+bin/
+include/
+lib/
+pyvenv.cfg
+
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore Django migration files
+my_tennis_club/*/migrations/
+
+# Ignore other unnecessary files
+*.log
+*.sqlite3
