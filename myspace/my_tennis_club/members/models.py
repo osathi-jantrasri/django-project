@@ -7,3 +7,6 @@ class Member(models.Model):
     note = models.CharField(max_length=100)
     bday = models.DateField()
     email = models.EmailField(null=True) # can be null
+    
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
