@@ -16,29 +16,21 @@ Including another URLconf
 """
 from django.urls import include, path
 from rest_framework import routers, serializers, viewsets
-from todoapp.models import Todo
+from todoapp import views
 from django.contrib.auth.models import User
 
-class TodoSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Todo
-        fields = ['title', 'description', 'completed']
         
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'is_staff']
         
-class TodoViewSet(viewsets.ModelViewSet):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
-    
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
 router = routers.DefaultRouter()
-router.register(r'todos', TodoViewSet)
+router.register(r'todos', views.TodoViewSet)
 router.register(r'users', UserViewSet)
 
 urlpatterns = [
