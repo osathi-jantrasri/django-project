@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.urls import include, path
 from rest_framework import routers, serializers, viewsets
-from todoapp import views
+from todoapp.views import TodoViewSet
+from members.views import MemberViewSet
 from django.contrib.auth.models import User
 
         
@@ -30,8 +31,9 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     
 router = routers.DefaultRouter()
-router.register(r'todos', views.TodoViewSet)
 router.register(r'users', UserViewSet)
+router.register(r'todos', TodoViewSet)
+router.register(r'members', MemberViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
